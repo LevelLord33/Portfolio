@@ -1,0 +1,182 @@
+.hero-section {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 0 8%;
+  overflow: hidden;
+  background: radial-gradient(circle at 80% 20%, rgba(189, 0, 255, 0.08) 0%, rgba(5, 5, 15, 0) 50%),
+              radial-gradient(circle at 10% 80%, rgba(0, 242, 254, 0.05) 0%, rgba(5, 5, 15, 0) 50%);
+}
+
+.hero-canvas-container {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 50%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: auto; /* Allow mouse interaction with canvas */
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  width: 55%;
+  pointer-events: none; /* Let pointer events fall through to Canvas behind elements if needed */
+}
+
+.hero-text {
+  pointer-events: auto; /* Re-enable pointer events for buttons and text selection */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.5rem;
+}
+
+.hero-welcome {
+  font-family: var(--font-mono);
+  color: var(--accent-cyan);
+  font-size: 0.95rem;
+  letter-spacing: 0.25em;
+  font-weight: 700;
+  text-shadow: 0 0 10px rgba(0, 242, 254, 0.3);
+}
+
+.hero-name {
+  font-size: 4rem;
+  font-weight: 800;
+  line-height: 1.1;
+  color: var(--text-primary);
+}
+
+.hero-title {
+  font-size: 2.2rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.hero-tagline {
+  font-size: 1.15rem;
+  color: var(--text-secondary);
+  max-width: 560px;
+  line-height: 1.6;
+}
+
+.hero-ctas {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+/* Scroll Down Mouse Animation */
+.scroll-indicator {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  z-index: 2;
+  transition: var(--transition-smooth);
+}
+
+.scroll-indicator:hover {
+  opacity: 0.8;
+  transform: translateX(-50%) translateY(4px);
+}
+
+.scroll-mouse {
+  width: 26px;
+  height: 42px;
+  border: 2px solid var(--text-muted);
+  border-radius: 15px;
+  position: relative;
+  display: block;
+}
+
+.scroll-wheel {
+  width: 4px;
+  height: 8px;
+  background-color: var(--accent-cyan);
+  border-radius: 2px;
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: scrollWheelAnim 1.6s infinite ease-in-out;
+}
+
+.scroll-text {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+@keyframes scrollWheelAnim {
+  0% {
+    top: 8px;
+    opacity: 1;
+  }
+  50% {
+    top: 18px;
+    opacity: 0;
+  }
+  100% {
+    top: 8px;
+    opacity: 1;
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .hero-section {
+    flex-direction: column;
+    justify-content: center;
+    padding-top: 80px;
+  }
+  .hero-canvas-container {
+    position: relative;
+    width: 100%;
+    height: 40vh;
+    order: 1;
+  }
+  .hero-content {
+    width: 100%;
+    order: 2;
+    margin-top: 2rem;
+  }
+  .hero-name {
+    font-size: 3rem;
+  }
+  .hero-title {
+    font-size: 1.8rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .hero-name {
+    font-size: 2.4rem;
+  }
+  .hero-title {
+    font-size: 1.4rem;
+  }
+  .hero-tagline {
+    font-size: 1rem;
+  }
+  .hero-ctas {
+    flex-direction: column;
+    width: 100%;
+    gap: 0.8rem;
+  }
+  .hero-ctas button {
+    width: 100%;
+    justify-content: center;
+  }
+}

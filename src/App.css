@@ -1,0 +1,24 @@
+.footer {
+  width: 100%;
+  padding: 3rem 2rem;
+  text-align: center;
+  border-radius: 0;
+  border-left: none;
+  border-right: none;
+  border-bottom: none;
+  margin-top: 5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.footer p {
+  color: var(--text-secondary);
+  font-size: 1rem;
+}
+
+.footer-sub {
+  color: var(--text-muted) !important;
+  font-family: var(--font-mono);
+  font-size: 0.8rem !important;
+}
